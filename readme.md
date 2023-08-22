@@ -1,0 +1,1 @@
+Automatic subtitle generator using OpenAI whisper and pyqt5
