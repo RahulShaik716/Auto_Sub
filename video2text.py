@@ -3,13 +3,14 @@ import whisper
 import os
 import sys
 model = whisper.load_model('base.en')
-option = whisper.DecodingOptions(language='en',fp16 = False)
+option = whisper.DecodingOptions(language='en',fp16= False)
 path = sys.argv[1]
 dir_list = os.listdir(path)
 for file1 in dir_list:
     filename = os.path.join(path,file1)
     result = model.transcribe(filename)
-    save_target = filename.replace('.mp4','.srt')
+    extension = filename.split(".")[-1]
+    save_target = filename.replace(extension, 'srt')
     print(save_target)
     with open(save_target,'w') as file: 
         for indx,segment in enumerate(result['segments']):
